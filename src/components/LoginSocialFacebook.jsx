@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useEffect, useRef, useState } from "react";
+import { FacebookLoginButton } from "react-social-login-buttons";
 /* eslint-disable camelcase */
 
 const JS_SRC = "https://connect.facebook.net/en_US/sdk.js";
@@ -7,9 +8,13 @@ const SCRIPT_ID = "facebook-jssdk";
 
 const _window = window;
 
-const FACEBOOK_APP_ID = ""; // TODO
+const FACEBOOK_APP_ID = "650450503866561";
 
-const LoginSocialFacebook = ({ onReject = () => {}, onResolve = () => {} }) => {
+const LoginSocialFacebook = ({
+  onReject = () => {},
+  onResolve = () => {},
+  isOnlyGetToken = false,
+}) => {
   const scriptNodeRef = useRef();
   const [isSdkLoaded, setIsSdkLoaded] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -44,10 +49,23 @@ const LoginSocialFacebook = ({ onReject = () => {}, onResolve = () => {} }) => {
 
   const handleResponse = (res) => {
     console.log("@@res", res);
-    onResolve({
-      provider: "facebook",
-      res,
-    });
+    if (isOnlyGetToken) {
+      onResolve(res?.authResponse?.accessToken);
+    } else {
+      _window.FB.api(
+        "/me",
+        {
+          fields:
+            "id,first_name,last_name,middle_name,name,name_format,picture,short_name,email,gender",
+        },
+        function (response) {
+          onResolve({
+            ...response,
+            accessToken: res?.authResponse?.accessToken,
+          });
+        }
+      );
+    }
   };
 
   const initFbSDK = () => {
@@ -97,7 +115,7 @@ const LoginSocialFacebook = ({ onReject = () => {}, onResolve = () => {} }) => {
     }
   };
 
-  return <button onClick={loginFB}>Login With Facebook</button>;
+  return <FacebookLoginButton onClick={loginFB} />;
 };
 
 LoginSocialFacebook.propTypes = {

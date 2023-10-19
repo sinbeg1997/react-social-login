@@ -84,7 +84,8 @@ const LoginSocialApple = ({ onReject = () => {}, onResolve = () => {} }) => {
     }
   };
 
-  return <button onClick={loginApple}>Login With Apple</button>;
+  return null;
+  // return <button onClick={loginApple}>Login With Apple</button>;
 };
 
 LoginSocialApple.propTypes = {

@@ -5,7 +5,8 @@ import { useEffect, useRef, useState } from "react";
 const JS_SRC = "https://accounts.google.com/gsi/client";
 const SCRIPT_ID = "google-login";
 const _window = window;
-const GOOGLE_CLIENT_ID = ""; // TODO
+const GOOGLE_CLIENT_ID =
+  "508195426573-2pcodpcud5bfiugl2lsnl8ne4s1gl627.apps.googleusercontent.com"; // TODO
 const GOOGLE_ELEMENT_ID = "GOOGLE_ELEMENT_ID";
 
 const LoginSocialGoogle = ({ onReject = () => {}, onResolve = () => {} }) => {
@@ -43,10 +44,7 @@ const LoginSocialGoogle = ({ onReject = () => {}, onResolve = () => {} }) => {
 
   const handleResponse = (res) => {
     console.log("@@res", res);
-    onResolve({
-      provider: "google",
-      res,
-    });
+    onResolve(res);
   };
 
   const load = () => {
@@ -63,7 +61,7 @@ const LoginSocialGoogle = ({ onReject = () => {}, onResolve = () => {} }) => {
           {
             theme: "outline",
             size: "large",
-            text: "continue_with",
+            // text: "continue_with",
             locale: "vi",
           } // customization attributes
         );
