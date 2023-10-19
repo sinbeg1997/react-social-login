@@ -34,15 +34,24 @@ function App() {
   return (
     <div className="p-[20px]">
       <div className="flex">
-        <div onClick={() => handleChangeTab(0)} className="text-blue-400">
+        <div
+          onClick={() => handleChangeTab(0)}
+          className="text-blue-400 cursor-pointer hover:underline"
+        >
           Demo Sign in Google
         </div>
         <span className="mx-[12px]">|</span>
-        <div onClick={() => handleChangeTab(1)} className="text-blue-400">
+        <div
+          onClick={() => handleChangeTab(1)}
+          className="text-blue-400 cursor-pointer  hover:underline"
+        >
           Demo Sign in Facebook
         </div>
         <span className="mx-[12px]">|</span>
-        <div onClick={() => handleChangeTab(2)} className="text-blue-400">
+        <div
+          onClick={() => handleChangeTab(2)}
+          className="text-blue-400 cursor-pointer  hover:underline"
+        >
           Demo Sign in Apple
         </div>
       </div>
@@ -57,6 +66,13 @@ function App() {
                 <div className="text-[24px] font-bold">Account Info</div>
                 <div>
                   <ul>
+                    <li>
+                      <strong>JWT Token:</strong>
+                      <div
+                        className="line-clamp-2"
+                        style={{ wordBreak: "break-word" }}
+                      >{`${googleToken}`}</div>
+                    </li>
                     <li>
                       <strong>Name:</strong>
                       {`${decodeGoogleToken?.given_name}${decodeGoogleToken?.family_name}`}
@@ -87,6 +103,12 @@ function App() {
                 <div className="text-[24px] font-bold">Account Info</div>
                 <div>
                   <ul>
+                    <li>
+                      <strong>Access Token:</strong>
+                      <div
+                        style={{ wordBreak: "break-word" }}
+                      >{`${fbInfo?.accessToken}`}</div>
+                    </li>
                     <li>
                       <strong>Name:</strong>
                       {`${fbInfo?.first_name} ${fbInfo?.middle_name} ${fbInfo?.last_name}`}

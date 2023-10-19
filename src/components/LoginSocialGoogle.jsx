@@ -9,7 +9,10 @@ const GOOGLE_CLIENT_ID =
   "508195426573-2pcodpcud5bfiugl2lsnl8ne4s1gl627.apps.googleusercontent.com"; // TODO
 const GOOGLE_ELEMENT_ID = "GOOGLE_ELEMENT_ID";
 
-const LoginSocialGoogle = ({ onReject = () => {}, onResolve = () => {} }) => {
+const LoginSocialGoogle = ({
+  // onReject = () => {},
+  onResolve = () => {},
+}) => {
   const scriptNodeRef = useRef();
   const [isSdkLoaded, setIsSdkLoaded] = useState(false);
 
@@ -43,7 +46,6 @@ const LoginSocialGoogle = ({ onReject = () => {}, onResolve = () => {} }) => {
   };
 
   const handleResponse = (res) => {
-    console.log("@@res", res);
     onResolve(res);
   };
 
