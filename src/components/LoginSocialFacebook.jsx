@@ -7,7 +7,7 @@ const SCRIPT_ID = "facebook-jssdk";
 
 const _window = window;
 
-const FACEBOOK_APP_ID = "650450503866561";
+const FACEBOOK_APP_ID = ""; // TODO
 
 const LoginSocialFacebook = ({ onReject = () => {}, onResolve = () => {} }) => {
   const scriptNodeRef = useRef();
