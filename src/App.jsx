@@ -31,6 +31,7 @@ function App() {
       });
     }
   };
+  console.log("@@fbInfo", fbInfo);
   return (
     <div className="p-[20px]">
       <div className="flex">
@@ -73,6 +74,7 @@ function App() {
                         style={{ wordBreak: "break-word" }}
                       >{`${googleToken}`}</div>
                     </li>
+
                     <li>
                       <strong>Name:</strong>
                       {`${decodeGoogleToken?.given_name}${decodeGoogleToken?.family_name}`}
@@ -108,6 +110,10 @@ function App() {
                       <div
                         style={{ wordBreak: "break-word" }}
                       >{`${fbInfo?.accessToken}`}</div>
+                    </li>
+                    <li>
+                      <strong>User Id:</strong>
+                      {`${fbInfo?.authResponse?.userID}`}
                     </li>
                     <li>
                       <strong>Name:</strong>

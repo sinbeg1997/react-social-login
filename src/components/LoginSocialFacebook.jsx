@@ -59,9 +59,11 @@ const LoginSocialFacebook = ({
             "id,first_name,last_name,middle_name,name,name_format,picture,short_name,email,gender",
         },
         function (response) {
+          console.log("@@info", response);
           onResolve({
             ...response,
             accessToken: res?.authResponse?.accessToken,
+            authResponse: res?.authResponse,
           });
         }
       );
