@@ -61,7 +61,9 @@ function App() {
           <div>
             <LoginSocialGoogle
               onResolve={(data) => setGoogleToken(data?.credential)}
-            />
+            >
+              Google
+            </LoginSocialGoogle>
             {googleToken && (
               <div>
                 <div className="text-[24px] font-bold">Account Info</div>
@@ -99,7 +101,9 @@ function App() {
         )}
         {tab === 1 && (
           <div>
-            <LoginSocialFacebook onResolve={(info) => setFbInfo(info)} />
+            <LoginSocialFacebook onResolve={(info) => setFbInfo(info)}>
+              Login Facebook
+            </LoginSocialFacebook>
             {fbInfo && (
               <div>
                 <div className="text-[24px] font-bold">Account Info</div>
